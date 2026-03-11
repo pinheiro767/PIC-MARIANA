@@ -3,394 +3,191 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perícia de Engajamento - Projeto UEM</title>
+  <title>Dashboard IC - UEM / MUDI</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
-    
-    * { font-family: 'Poppins', sans-serif; }
-    html { height: 100%; }
-    body { height: 100%; box-sizing: border-box; background: linear-gradient(135deg, #f8f9ff 0%, #fff5f7 100%); }
-    
     @media print { .no-print { display: none !important; } }
-    .custom-scrollbar::-webkit-scrollbar { width: 8px; }
-    .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #be123c, #ec4899); border-radius: 10px; }
-    
-    .fade-in { animation: fadeInUp 0.6s ease-out; }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    
-    .pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
-    @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 20px rgba(190, 18, 60, 0.3); } 50% { box-shadow: 0 0 40px rgba(190, 18, 60, 0.6); } }
-    
-    .gradient-text { background: linear-gradient(135deg, #be123c, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    
-    .card-hover { transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
-    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(190, 18, 60, 0.15); }
-    
-    .input-focus { transition: all 0.3s ease; }
-    .input-focus:focus { transform: scale(1.02); }
-    
-    .sticky-nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px); background: rgba(255,255,255,0.8); }
-    
-    .tooltip-container { position: relative; display: inline-block; cursor: help; border-bottom: 2px dotted #be123c; }
-    .tooltip-text { visibility: hidden; background-color: #1f2937; color: #fff; text-align: center; border-radius: 8px; padding: 8px 12px; position: absolute; z-index: 1000; bottom: 125%; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 12px; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.3s ease; }
-    .tooltip-text::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: #1f2937 transparent transparent transparent; }
-    .tooltip-container:hover .tooltip-text { visibility: visible; opacity: 1; }
-    
-    @media (max-width: 768px) {
-      .text-3xl { font-size: 1.875rem; }
-      .text-2xl { font-size: 1.5rem; }
-      .grid-cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #be123c; border-radius: 10px; }
+    body { box-sizing: border-box; }
   </style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
  </head>
- <body class="h-full overflow-auto custom-scrollbar">
-  <div class="w-full min-h-full">
-   <header class="sticky-nav py-6 px-4 md:px-8 mb-8 border-b border-rose-100">
-    <div class="max-w-6xl mx-auto">
-     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-      <div class="fade-in">
-       <h1 class="text-3xl md:text-4xl font-black gradient-text uppercase tracking-tight">🔬 Perícia em Engajamento</h1>
-       <p class="text-rose-700 mt-2 font-semibold text-sm md:text-base">Iniciação Científica UEM • Orientação: Profa. Dra. Sônia Trannin / Profa. Cláudia Pinheiro</p>
-      </div>
-      <div class="bg-gradient-to-r from-rose-500 to-pink-500 text-white px-6 py-3 rounded-full text-xs font-black pulse-glow no-print tracking-widest border-2 border-rose-300 shadow-lg">
-       AMOSTRA: 10 POSTS 🎯
-      </div>
+ <body class="h-full bg-slate-100 font-sans overflow-auto custom-scrollbar">
+  <div class="max-w-7xl mx-auto px-6 py-10">
+   <header class="bg-gradient-to-r from-rose-900 to-rose-800 text-white rounded-3xl shadow-2xl p-10 mb-8 border-b-8 border-rose-700 relative overflow-hidden">
+    <div class="relative z-10">
+     <div class="flex items-center gap-3 mb-2"><span class="bg-rose-500 text-white px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase">Cronograma Acelerado</span> <span class="text-rose-200 text-xs font-bold uppercase tracking-widest">UEM • Iniciação Científica</span>
      </div>
+     <h1 class="text-4xl font-black tracking-tighter uppercase mb-2">🔬 Perícia em Engajamento Digital</h1>
+     <p class="text-rose-100 text-lg font-medium opacity-90 italic">Pesquisadora: Mariana Nascimento Begalle • Orientação: Sônia Trannin / Cláudia Pinheiro</p>
     </div>
    </header>
-   <div class="max-w-6xl mx-auto px-4 md:px-8 pb-12">
-    <section class="fade-in bg-gradient-to-br from-blue-50 via-blue-50 to-cyan-50 rounded-2xl p-6 md:p-8 mb-8 shadow-lg no-print border-2 border-blue-200 card-hover">
-     <h2 class="text-xl md:text-2xl font-black mb-6 flex items-center gap-2 gradient-text uppercase">📋 Roteiro Mariana</h2>
-     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-      <div class="bg-white p-4 rounded-xl border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-all">
-       <p class="text-lg font-black text-blue-600 mb-2">1️⃣</p>
-       <p class="text-sm font-semibold text-slate-700">Analise os prints e vídeos de insights fornecidos pela orientadora.</p>
+   <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10 no-print">
+    <section class="bg-blue-600 text-white rounded-3xl shadow-xl p-8 border-l-8 border-blue-800">
+     <h2 class="text-2xl font-black mb-6 italic flex items-center gap-2">🎯 Metas de Março</h2>
+     <div class="space-y-4">
+      <div class="bg-blue-700/40 p-4 rounded-xl border border-blue-400">
+       <p class="font-black text-xs uppercase mb-1">1. Amostra Estratégica</p>
+       <p class="text-xs opacity-90 font-medium">Tabular 10 posts alvo (HPV, Natal, Dieta, etc.) na Retroescavadeira abaixo.</p>
       </div>
-      <div class="bg-white p-4 rounded-xl border-l-4 border-cyan-500 shadow-sm hover:shadow-md transition-all">
-       <p class="text-lg font-black text-cyan-600 mb-2">2️⃣</p>
-       <p class="text-sm font-semibold text-slate-700">Tabule os <strong>10 posts estratégicos</strong> abaixo (HPV, Natal, Autoexame, etc.).</p>
+      <div class="bg-blue-700/40 p-4 rounded-xl border border-blue-400">
+       <p class="font-black text-xs uppercase mb-1">2. Rigor Ético</p>
+       <p class="text-xs opacity-90 font-medium">Finalizar TCLE e configurar o Google Forms com os 3 blocos de perguntas.</p>
       </div>
-      <div class="bg-white p-4 rounded-xl border-l-4 border-teal-500 shadow-sm hover:shadow-md transition-all">
-       <p class="text-lg font-black text-teal-600 mb-2">3️⃣</p>
-       <p class="text-sm font-semibold text-slate-700">Salve o rascunho do TCLE e as perguntas para Abril.</p>
+      <div class="bg-blue-700/40 p-4 rounded-xl border border-blue-400">
+       <p class="font-black text-xs uppercase mb-1">3. Análise Quantitativa</p>
+       <p class="text-xs opacity-90 font-medium">Exportar Excel dos posts e validar se o perfil 18-24 anos foi atingido.</p>
       </div>
-     </div>
-     <div class="bg-gradient-to-r from-amber-50 to-orange-50 p-5 md:p-6 rounded-xl border-l-4 border-amber-500 shadow-md">
-      <p class="text-sm md:text-base font-bold text-amber-900 mb-4 flex items-center gap-2">✨ Como usar:</p>
-      <ul class="text-xs md:text-sm space-y-3 text-slate-700 font-semibold">
-       <li class="flex gap-3"><span class="text-lg">📊</span><span><strong>PASSO 1:</strong> Preencha a <strong>Retroescavadeira</strong> com os dados dos 10 posts</span></li>
-       <li class="flex gap-3"><span class="text-lg">🧮</span><span><strong>PASSO 2:</strong> Use a <strong>Calculadora de Taxa</strong> para validar eficácia geral</span></li>
-       <li class="flex gap-3"><span class="text-lg">👥</span><span><strong>PASSO 3:</strong> Tabule respondentes na <strong>Calculadora Etária</strong> (compare com 39,8%)</span></li>
-       <li class="flex gap-3"><span class="text-lg">⚖️</span><span><strong>PASSO 4:</strong> Revise o <strong>TCLE</strong> e cole no Google Forms</span></li>
-       <li class="flex gap-3"><span class="text-lg">📋</span><span><strong>PASSO 5:</strong> Copie o <strong>Roteiro de Perguntas</strong> para o formulário</span></li>
-      </ul>
      </div>
     </section>
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
-     <div class="fade-in bg-white rounded-2xl shadow-lg p-6 md:p-8 border-t-4 border-amber-500 card-hover">
-      <h3 class="font-black text-slate-800 mb-5 text-lg md:text-xl flex items-center gap-2">🧮 Calculadora de Taxa</h3>
-      <p class="text-xs md:text-sm text-amber-700 bg-amber-50 p-3 rounded-lg mb-4 italic border-l-2 border-amber-400 font-semibold"><strong>Como:</strong> Some TODAS as interações → coloque em "Interações". Depois some TODOS os "Alcance".</p>
-      <div class="space-y-3">
-       <input type="number" id="calcInter" placeholder="Interações (👍+💬+🔖+↗️)" class="w-full p-3 bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-200 rounded-xl text-sm font-bold outline-none input-focus focus:border-amber-500" oninput="quickCalc()"> <input type="number" id="calcReach" placeholder="Alcance Total" class="w-full p-3 bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-200 rounded-xl text-sm font-bold outline-none input-focus focus:border-amber-500" oninput="quickCalc()">
-       <div class="p-4 bg-gradient-to-r from-amber-100 to-orange-100 rounded-xl text-center border-2 border-amber-300 font-black text-amber-800 text-3xl shadow-md" id="resCalc">
-        — %
-       </div>
-      </div>
+    <section class="bg-emerald-600 text-white rounded-3xl shadow-xl p-8 border-l-8 border-emerald-800">
+     <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-black italic flex items-center gap-2">🏛️ Monitoria MUDI</h2><span id="horasTotal" class="bg-white text-emerald-700 px-4 py-1 rounded-full font-black text-sm">0.00h / 20h</span>
      </div>
-     <div class="fade-in bg-white rounded-2xl shadow-lg p-6 md:p-8 border-t-4 border-cyan-500 card-hover lg:col-span-2">
-      <h3 class="font-black text-slate-800 mb-6 text-lg md:text-xl flex items-center gap-2">📊 Calculadora Etária</h3>
-      <div class="bg-gradient-to-br from-cyan-50 via-blue-50 to-teal-50 p-5 md:p-6 rounded-2xl mb-6 border-2 border-cyan-200 shadow-sm">
-       <p class="font-bold text-cyan-900 text-sm md:text-base mb-4 uppercase flex items-center gap-2">🎯 Passo a Passo:</p>
-       <ol class="space-y-2 text-xs md:text-sm text-cyan-800 font-bold ml-3">
-        <li><span class="inline-block bg-cyan-300 text-cyan-900 px-2.5 py-1 rounded-lg font-black mr-2 text-xs">1️⃣</span><strong>Abra</strong> o formulário respondido</li>
-        <li><span class="inline-block bg-cyan-300 text-cyan-900 px-2.5 py-1 rounded-lg font-black mr-2 text-xs">2️⃣</span><strong>Conte:</strong> quantas pessoas em cada faixa etária?</li>
-        <li><span class="inline-block bg-cyan-300 text-cyan-900 px-2.5 py-1 rounded-lg font-black mr-2 text-xs">3️⃣</span><strong>Digite</strong> os números nos campos abaixo</li>
-        <li><span class="inline-block bg-cyan-300 text-cyan-900 px-2.5 py-1 rounded-lg font-black mr-2 text-xs">4️⃣</span><strong>Os %</strong> aparecem automaticamente! 🎉</li>
-       </ol>
-      </div>
-      <div class="bg-gradient-to-r from-slate-100 to-blue-50 p-4 md:p-5 rounded-xl mb-5 border-l-4 border-blue-500 shadow-sm">
-       <p class="text-xs md:text-sm font-black text-slate-800 mb-3">💡 EXEMPLO:</p>
-       <p class="text-[11px] md:text-xs text-slate-700 mb-3 font-semibold">Se 10 responderam: <strong>3 Sub-18, 5 de 18-24, 1 de 25-34, 1 de 35+</strong></p>
-       <div class="grid grid-cols-4 gap-2 mb-3">
-        <div class="bg-white p-2 rounded text-center border-2 border-slate-200">
-         <p class="text-[9px] font-black text-slate-500">Sub-18</p>
-         <p class="text-sm font-black text-cyan-700">3</p>
-        </div>
-        <div class="bg-blue-200 p-2 rounded text-center border-2 border-blue-400">
-         <p class="text-[9px] font-black text-blue-600">18-24 ⭐</p>
-         <p class="text-sm font-black text-blue-700">5</p>
-        </div>
-        <div class="bg-white p-2 rounded text-center border-2 border-slate-200">
-         <p class="text-[9px] font-black text-slate-500">25-34</p>
-         <p class="text-sm font-black text-indigo-700">1</p>
-        </div>
-        <div class="bg-white p-2 rounded text-center border-2 border-slate-200">
-         <p class="text-[9px] font-black text-slate-500">35+</p>
-         <p class="text-sm font-black text-purple-700">1</p>
-        </div>
-       </div>
-       <p class="text-[10px] md:text-xs text-slate-700 font-bold">→ Resultado: <span class="bg-blue-300 text-blue-900 px-2 py-1 rounded font-black">50% em 18-24</span> vs meta de <span class="bg-amber-200 text-amber-900 px-2 py-1 rounded font-black">39,8%</span></p>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
-       <div><label class="text-[9px] font-black text-slate-500 uppercase block mb-2">Menos 18</label><input type="number" id="ageUnder18" placeholder="0" class="w-full p-2.5 bg-cyan-50 border-2 border-cyan-300 rounded-lg text-sm font-black text-center outline-none input-focus focus:border-cyan-500 transition-all" oninput="calcAgeRange()">
-       </div>
-       <div><label class="text-[9px] font-black text-slate-500 uppercase block mb-2">18 a 24</label><input type="number" id="age18to24" placeholder="0" class="w-full p-2.5 bg-blue-50 border-2 border-blue-400 rounded-lg text-sm font-black text-center outline-none input-focus focus:border-blue-500 transition-all" oninput="calcAgeRange()">
-       </div>
-       <div><label class="text-[9px] font-black text-slate-500 uppercase block mb-2">25 a 34</label><input type="number" id="age25to34" placeholder="0" class="w-full p-2.5 bg-indigo-50 border-2 border-indigo-300 rounded-lg text-sm font-black text-center outline-none input-focus focus:border-indigo-500 transition-all" oninput="calcAgeRange()">
-       </div>
-       <div><label class="text-[9px] font-black text-slate-500 uppercase block mb-2">35+</label><input type="number" id="age35plus" placeholder="0" class="w-full p-2.5 bg-purple-50 border-2 border-purple-300 rounded-lg text-sm font-black text-center outline-none input-focus focus:border-purple-500 transition-all" oninput="calcAgeRange()">
-       </div>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-       <div class="bg-gradient-to-br from-cyan-50 to-cyan-100 p-3 rounded-xl text-center border-2 border-cyan-200 shadow-sm hover:shadow-md transition-all">
-        <p class="text-[8px] md:text-[9px] font-bold text-cyan-600 uppercase mb-1">Sub-18</p>
-        <p class="text-lg md:text-2xl font-black text-cyan-700" id="pctUnder18">—</p>
-       </div>
-       <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-3 rounded-xl text-center border-2 border-blue-400 shadow-md ring-2 ring-blue-300 hover:shadow-lg transition-all">
-        <p class="text-[8px] md:text-[9px] font-bold text-blue-600 uppercase mb-1">META 18-24</p>
-        <p class="text-lg md:text-2xl font-black text-blue-700" id="pct18to24">—</p>
-       </div>
-       <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 p-3 rounded-xl text-center border-2 border-indigo-200 shadow-sm hover:shadow-md transition-all">
-        <p class="text-[8px] md:text-[9px] font-bold text-indigo-600 uppercase mb-1">25-34</p>
-        <p class="text-lg md:text-2xl font-black text-indigo-700" id="pct25to34">—</p>
-       </div>
-       <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-3 rounded-xl text-center border-2 border-purple-200 shadow-sm hover:shadow-md transition-all">
-        <p class="text-[8px] md:text-[9px] font-bold text-purple-600 uppercase mb-1">35+</p>
-        <p class="text-lg md:text-2xl font-black text-purple-700" id="pct35plus">—</p>
-       </div>
-      </div>
-      <div class="mt-5 p-4 bg-gradient-to-r from-blue-100 to-blue-50 border-2 border-blue-300 rounded-xl text-center shadow-md">
-       <p class="text-[10px] md:text-xs text-blue-900 font-black uppercase">📌 META DE REFERÊNCIA: 39,8% | 70,8% Masculino</p>
-       <p class="text-[9px] md:text-xs text-blue-800 mt-2 italic font-semibold">Se seu resultado ≈ 39,8%, a página atingiu o público esperado! ✅</p>
-      </div>
+     <div class="space-y-3 max-h-48 overflow-y-auto custom-scrollbar mb-4" id="agendaList">
+      <p class="text-xs text-emerald-100 italic">Nenhuma sessão registrada.</p>
+     </div>
+     <form id="agendaForm" class="grid grid-cols-1 md:grid-cols-3 gap-2" onsubmit="addAgenda(event)"><input type="date" id="inDataAgenda" class="p-2 rounded-lg text-slate-800 text-xs font-bold outline-none"> <input type="time" id="inEntrada" class="p-2 rounded-lg text-slate-800 text-xs font-bold outline-none"> <input type="time" id="inSaida" class="p-2 rounded-lg text-slate-800 text-xs font-bold outline-none"> <button type="submit" class="md:col-span-3 bg-emerald-800 hover:bg-emerald-900 text-white font-black py-2 rounded-xl text-[10px] tracking-widest uppercase transition-all mt-2">+ Registrar Presença</button>
+     </form>
+    </section>
+   </div>
+   <section class="bg-white rounded-3xl shadow-2xl overflow-hidden mb-10 border-2 border-slate-200" id="reportArea">
+    <div class="bg-slate-900 p-8 text-white flex flex-wrap justify-between items-center gap-6 no-print">
+     <div>
+      <h2 class="text-2xl font-black tracking-tight flex items-center gap-3 uppercase">📊 1. Retroescavadeira: Amostra de 10 Posts</h2>
+      <p class="text-slate-400 text-xs mt-1 font-medium italic">Dados secundários baseados nos vídeos de insights.</p>
+     </div>
+     <div class="flex gap-3"><button onclick="exportToExcel()" class="bg-emerald-600 hover:bg-emerald-700 px-6 py-3 rounded-xl text-[10px] font-black tracking-widest transition-all shadow-lg uppercase">Excel</button> <button onclick="downloadReport()" class="bg-rose-700 hover:bg-rose-800 px-6 py-3 rounded-xl text-[10px] font-black tracking-widest transition-all shadow-lg uppercase">PDF</button> <button onclick="window.print()" class="bg-sky-700 hover:bg-sky-800 px-6 py-3 rounded-xl text-[10px] font-black tracking-widest transition-all shadow-lg uppercase">Imprimir</button>
      </div>
     </div>
-    <section class="fade-in bg-white rounded-2xl shadow-2xl overflow-hidden mb-10 border-2 border-slate-200" id="reportArea">
-     <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 p-6 md:p-8 text-white flex flex-col md:flex-row justify-between items-start md:items-center gap-4 no-print shadow-lg">
-      <div>
-       <h2 class="text-2xl md:text-3xl font-black flex items-center gap-3 tracking-tight gradient-text">📊 Retroescavadeira</h2>
-       <p class="text-slate-300 text-xs md:text-sm mt-2 font-semibold italic">10 posts estratégicos de Março</p>
-      </div>
-      <div class="flex flex-wrap gap-2 md:gap-3">
-       <button onclick="exportToExcel()" class="bg-emerald-600 hover:bg-emerald-700 px-4 md:px-6 py-2 md:py-3 rounded-lg text-[10px] md:text-xs font-black tracking-widest transition-all shadow-lg hover:shadow-xl">🟢 EXCEL</button> <button onclick="downloadReport()" class="bg-rose-700 hover:bg-rose-800 px-4 md:px-6 py-2 md:py-3 rounded-lg text-[10px] md:text-xs font-black tracking-widest transition-all shadow-lg hover:shadow-xl">🔴 PDF</button> <button onclick="window.print()" class="bg-sky-700 hover:bg-sky-800 px-4 md:px-6 py-2 md:py-3 rounded-lg text-[10px] md:text-xs font-black tracking-widest transition-all shadow-lg hover:shadow-xl">🔵 IMPRIMIR</button>
-      </div>
-     </div>
-     <div class="overflow-x-auto bg-gradient-to-b from-slate-50 to-white">
-      <table class="w-full text-left border-collapse text-sm" id="mainTable">
-       <thead>
-        <tr class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white uppercase text-[10px] md:text-[11px] font-black tracking-widest border-b-4 border-rose-600">
-         <th class="p-3 md:p-5">📅 Data</th>
-         <th class="p-3 md:p-5">📝 Tema</th>
-         <th class="p-3 md:p-5 text-center">
-          <div class="tooltip-container">
-           👁️ <span class="tooltip-text">Alcance: Quantas pessoas viram o post</span>
-          </div></th>
-         <th class="p-3 md:p-5 text-center">
-          <div class="tooltip-container">
-           👍 <span class="tooltip-text">Curtidas: Número de reações positivas</span>
-          </div></th>
-         <th class="p-3 md:p-5 text-center">
-          <div class="tooltip-container">
-           💬 <span class="tooltip-text">Comentários: Interações diretas</span>
-          </div></th>
-         <th class="p-3 md:p-5 text-center">
-          <div class="tooltip-container">
-           🔖 <span class="tooltip-text">Salvamentos: Posts guardados</span>
-          </div></th>
-         <th class="p-3 md:p-5 text-center">
-          <div class="tooltip-container">
-           ↗️ <span class="tooltip-text">Compartilhamentos: Divulgações</span>
-          </div></th>
-         <th class="p-3 md:p-5 text-center bg-gradient-to-r from-rose-600 to-rose-500">
-          <div class="tooltip-container">
-           ✨ <span class="tooltip-text">Taxa de Eficiência: Engajamento ÷ Alcance</span>
-          </div></th>
-         <th class="p-3 md:p-5 text-center no-print">⚙️</th>
-        </tr>
-       </thead>
-       <tbody id="tableBody" class="text-slate-800"></tbody>
-      </table>
-     </div>
-     <div class="p-6 md:p-8 bg-slate-50 border-t-2 border-slate-200 no-print">
-      <form id="addForm" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 md:gap-3" onsubmit="addRow(event)">
-       <input type="text" id="inDate" placeholder="Data" class="p-2.5 md:p-3 border-2 border-slate-200 rounded-lg text-xs md:text-sm outline-none input-focus focus:border-rose-500 focus:ring-2 focus:ring-rose-200" required> <input type="text" id="inTheme" placeholder="Tema" class="p-2.5 md:p-3 border-2 border-slate-200 rounded-lg text-xs md:text-sm lg:col-span-2 outline-none input-focus focus:border-rose-500 focus:ring-2 focus:ring-rose-200" required> <input type="number" id="inReach" placeholder="Alcance" class="p-2.5 md:p-3 border-2 border-slate-200 rounded-lg text-xs md:text-sm outline-none input-focus focus:border-rose-500 focus:ring-2 focus:ring-rose-200" required> <input type="number" id="inLikes" placeholder="👍" class="p-2.5 md:p-3 border-2 border-slate-200 rounded-lg text-xs md:text-sm outline-none input-focus focus:border-rose-500 focus:ring-2 focus:ring-rose-200" required> <input type="number" id="inComm" placeholder="💬" class="p-2.5 md:p-3 border-2 border-slate-200 rounded-lg text-xs md:text-sm outline-none input-focus focus:border-rose-500 focus:ring-2 focus:ring-rose-200" required> <input type="number" id="inSave" placeholder="🔖" class="p-2.5 md:p-3 border-2 border-slate-200 rounded-lg text-xs md:text-sm outline-none input-focus focus:border-rose-500 focus:ring-2 focus:ring-rose-200" required> <input type="number" id="inShare" placeholder="↗️" class="p-2.5 md:p-3 border-2 border-slate-200 rounded-lg text-xs md:text-sm outline-none input-focus focus:border-rose-500 focus:ring-2 focus:ring-rose-200" required> <button type="submit" class="bg-gradient-to-r from-rose-700 to-rose-800 hover:from-rose-900 hover:to-rose-950 text-white font-black rounded-lg py-2.5 md:py-3 shadow-lg hover:shadow-xl transition-all uppercase text-[10px] md:text-xs tracking-widest">＋ ADICIONAR</button>
-      </form>
-     </div>
+    <div class="overflow-x-auto">
+     <table class="w-full text-left border-collapse" id="mainTable">
+      <thead>
+       <tr class="bg-slate-50 text-slate-400 uppercase text-[10px] font-black border-b-2 border-slate-100 tracking-widest">
+        <th class="p-6">Data</th>
+        <th class="p-6">Conteúdo Analisado</th>
+        <th class="p-6 text-center">👁️ Alcance</th>
+        <th class="p-6 text-center">👍 Curt.</th>
+        <th class="p-6 text-center">💬 Coment.</th>
+        <th class="p-6 text-center">🔖 Salvos</th>
+        <th class="p-6 text-center bg-rose-50 text-rose-900 font-black border-l border-rose-100 shadow-inner italic">EFICÁCIA (%)</th>
+        <th class="p-6 text-center no-print">Ação</th>
+       </tr>
+      </thead>
+      <tbody id="tableBody" class="text-slate-700 font-medium">
+       <tr class="bg-gradient-to-r from-purple-50 to-pink-50 border-b-4 border-dashed border-purple-300 font-bold shadow-md hover:from-purple-100 hover:to-pink-100 transition-all">
+        <td class="p-6 font-mono text-[10px] font-black text-purple-600 uppercase tracking-tighter">15/03</td>
+        <td class="p-6 font-black text-purple-900 text-sm tracking-tight">📌 EXEMPLO: HPV - Vacinação</td>
+        <td class="p-6 text-center font-black text-blue-600 text-base">2.450</td>
+        <td class="p-6 text-center text-purple-700 font-bold text-sm">187</td>
+        <td class="p-6 text-center text-purple-700 font-bold text-sm">45</td>
+        <td class="p-6 text-center"><span class="bg-purple-100 text-purple-800 font-black p-2 rounded-lg border border-purple-300">92</span></td>
+        <td class="p-6 text-center bg-gradient-to-r from-purple-100 to-pink-100 font-black text-purple-900 text-lg border-l-4 border-purple-400 italic shadow-inner">9.65%</td>
+        <td class="p-6 text-center text-purple-500 italic text-xs font-bold">👆 referência</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="p-8 bg-slate-50 border-t-2 border-slate-100 no-print">
+     <form id="addForm" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4" onsubmit="addRow(event)"><input type="text" id="inDate" placeholder="dd/mm" class="p-3 bg-white border rounded-xl text-xs outline-none focus:ring-2 focus:ring-rose-500 shadow-sm"> <input type="text" id="inTheme" placeholder="Tema" class="p-3 bg-white border rounded-xl text-xs outline-none focus:ring-2 focus:ring-rose-500 shadow-sm lg:col-span-2"> <input type="number" id="inReach" placeholder="Alcance" class="p-3 bg-white border rounded-xl text-xs shadow-sm"> <input type="number" id="inLikes" placeholder="👍" class="p-3 bg-white border rounded-xl text-xs shadow-sm"> <input type="number" id="inComm" placeholder="💬" class="p-3 bg-white border rounded-xl text-xs shadow-sm"> <input type="number" id="inSave" placeholder="🔖" class="p-3 bg-white border rounded-xl text-xs shadow-sm"> <button type="submit" class="bg-rose-800 text-white font-black rounded-xl py-3 hover:bg-rose-950 uppercase text-[10px] tracking-widest shadow-lg transition-all">Adicionar</button>
+     </form>
+    </div>
+   </section>
+   <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+    <section class="bg-white rounded-3xl shadow-xl p-8 border-t-8 border-indigo-700 lg:col-span-2">
+     <h2 class="text-2xl font-black text-slate-800 mb-4 uppercase flex items-center gap-3 italic">⚖️ Termo de Consentimento (UEM)</h2>
+     <p class="text-xs text-indigo-900 mb-6 font-medium italic bg-indigo-50 p-4 border-l-4 border-indigo-400">Mariana: O rascunho abaixo garante o anonimato total. Revise e salve para usar em Abril.</p><textarea id="tcleField" class="w-full h-64 p-6 border-2 border-indigo-50 rounded-2xl bg-slate-50 font-mono text-sm leading-relaxed outline-none focus:ring-2 focus:ring-indigo-500 custom-scrollbar text-slate-600 mb-4 shadow-inner"></textarea> <button onclick="saveTcle()" class="bg-indigo-700 text-white px-8 py-3 rounded-xl font-black shadow-lg hover:bg-indigo-900 transition-all uppercase text-[10px] tracking-widest no-print">💾 Salvar Rascunho</button> <span id="tcleStatus" class="ml-4 text-emerald-600 font-black text-sm"></span>
     </section>
-    <section class="fade-in bg-white rounded-2xl shadow-xl p-6 md:p-8 border-t-8 border-indigo-600 mb-10 card-hover">
-     <h2 class="text-2xl md:text-3xl font-black text-slate-800 mb-3 flex items-center gap-2">⚖️ Termo de Consentimento</h2>
-     <p class="text-xs md:text-sm text-indigo-900 mb-5 font-semibold italic bg-indigo-50 p-4 border-l-4 border-indigo-400 rounded-lg">Revise este texto para estar pronto para o Google Forms em Abril.</p><textarea id="tcleField" class="w-full h-64 md:h-80 p-4 md:p-6 border-2 border-indigo-200 rounded-xl bg-gradient-to-br from-indigo-50 to-blue-50 font-mono text-xs md:text-sm leading-relaxed outline-none input-focus focus:border-indigo-500 custom-scrollbar shadow-inner"></textarea>
-     <div class="mt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 no-print">
-      <div class="flex flex-wrap gap-2 md:gap-3">
-       <button onclick="saveTcle()" class="bg-gradient-to-r from-indigo-700 to-indigo-800 hover:from-indigo-900 hover:to-indigo-950 text-white px-6 md:px-8 py-3 rounded-lg font-black shadow-lg hover:shadow-xl transition-all uppercase text-[10px] md:text-xs tracking-widest">💾 Salvar</button> <button onclick="resetTcle()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 md:px-8 py-3 rounded-lg font-bold transition-all text-[10px] md:text-xs uppercase tracking-widest">🔄 Original</button>
-      </div><span id="tcleStatus" class="text-emerald-600 font-black text-sm animate-pulse"></span>
-     </div>
-    </section>
-    <section class="fade-in bg-white rounded-2xl shadow-xl p-6 md:p-8 border-t-8 border-cyan-600 mb-10 card-hover">
-     <h2 class="text-2xl md:text-3xl font-black text-slate-800 mb-3 flex items-center gap-2">📊 Perfil dos Respondentes</h2>
-     <p class="text-xs md:text-sm text-cyan-900 mb-6 font-semibold italic bg-cyan-50 p-4 border-l-4 border-cyan-400 rounded-lg">Utilize esta tabela para análise demográfica dos respondentes em Abril.</p>
-     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="bg-gradient-to-br from-cyan-50 to-cyan-100 p-5 md:p-6 rounded-2xl border-2 border-cyan-200 shadow-md hover:shadow-lg transition-all">
-       <p class="text-[10px] md:text-xs text-cyan-600 font-black uppercase tracking-widest mb-3">Faixa Etária</p>
-       <p class="text-2xl md:text-3xl font-black text-cyan-900 mb-2">Menos 18</p>
-       <p class="text-sm md:text-base font-bold text-cyan-700">—</p>
+    <section class="bg-white rounded-3xl shadow-xl p-8 border-t-8 border-cyan-600">
+     <h2 class="text-lg font-black text-slate-800 mb-4 uppercase italic">📊 Perfil Meta Página</h2>
+     <div class="space-y-4">
+      <div class="p-5 bg-cyan-50 rounded-2xl border-2 border-cyan-100 shadow-sm relative overflow-hidden">
+       <p class="text-[10px] font-black text-cyan-600 mb-1 uppercase tracking-widest">Base de Respondentes</p>
+       <p class="text-3xl font-black text-cyan-900">39,8%</p>
+       <p class="text-[11px] font-bold text-cyan-700 mt-1 uppercase">Faixa: 18-24 Anos</p>
+       <div class="absolute -right-4 -bottom-4 opacity-10 text-6xl font-black">
+        18
+       </div>
       </div>
-      <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-5 md:p-6 rounded-2xl border-2 border-blue-400 shadow-lg hover:shadow-xl transition-all ring-2 ring-blue-300">
-       <p class="text-[10px] md:text-xs text-blue-600 font-black uppercase tracking-widest mb-3">Prioritária ⭐</p>
-       <p class="text-2xl md:text-3xl font-black text-blue-900 mb-2">18 a 24</p>
-       <p class="text-xl md:text-2xl font-black text-blue-600">39,8%</p>
-       <p class="text-[10px] md:text-xs font-semibold text-blue-700 mt-1">Meta Base</p>
+      <div class="p-5 bg-blue-50 rounded-2xl border-2 border-blue-100 shadow-sm relative overflow-hidden">
+       <p class="text-[10px] font-black text-blue-600 mb-1 uppercase tracking-widest">Gênero Alvo</p>
+       <p class="text-3xl font-black text-blue-900">70,8%</p>
+       <p class="text-[11px] font-bold text-blue-700 mt-1 uppercase">Masculino</p>
+       <div class="absolute -right-4 -bottom-4 opacity-10 text-6xl font-black">
+        ♂
+       </div>
       </div>
-      <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 p-5 md:p-6 rounded-2xl border-2 border-indigo-200 shadow-md hover:shadow-lg transition-all">
-       <p class="text-[10px] md:text-xs text-indigo-600 font-black uppercase tracking-widest mb-3">Faixa Etária</p>
-       <p class="text-2xl md:text-3xl font-black text-indigo-900 mb-2">25 a 34</p>
-       <p class="text-sm md:text-base font-bold text-indigo-700">—</p>
-      </div>
-      <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-5 md:p-6 rounded-2xl border-2 border-purple-200 shadow-md hover:shadow-lg transition-all">
-       <p class="text-[10px] md:text-xs text-purple-600 font-black uppercase tracking-widest mb-3">Faixa Etária</p>
-       <p class="text-2xl md:text-3xl font-black text-purple-900 mb-2">35+</p>
-       <p class="text-sm md:text-base font-bold text-purple-700">—</p>
-      </div>
-     </div>
-     <div class="mt-6 p-4 md:p-5 bg-gradient-to-r from-amber-50 to-orange-50 border-l-4 border-amber-500 rounded-lg shadow-sm">
-      <p class="text-sm md:text-base font-bold text-amber-900">💡 <span class="font-black">70,8% Masculino</span> na faixa 18-24 (referência de gênero)</p>
-     </div>
-    </section>
-    <section class="fade-in bg-white rounded-2xl shadow-2xl p-6 md:p-8 border-t-8 border-purple-600 mb-12 card-hover">
-     <h2 class="text-2xl md:text-3xl font-black text-slate-800 mb-3 flex items-center gap-2">📋 Roteiro de Perguntas</h2>
-     <p class="text-xs md:text-sm text-purple-900 mb-6 font-semibold italic bg-purple-50 p-4 border-l-4 border-purple-400 rounded-lg">Insira estas perguntas no Google Forms após o TCLE. Estruturadas em 3 blocos para garantir anonimização total.</p>
-     <div class="space-y-5">
-      <!-- Bloco 1 -->
-      <div class="bg-gradient-to-r from-purple-50 via-purple-50 to-pink-50 rounded-2xl p-5 md:p-6 border-l-4 md:border-l-8 border-purple-600 shadow-md hover:shadow-lg transition-all">
-       <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 mb-4">
-        <h3 class="text-lg md:text-xl font-black text-purple-900 flex items-center gap-2">👤 BLOCO 1: Perfil</h3><button onclick="copyBlock('bloco1')" class="bg-purple-600 hover:bg-purple-700 text-white px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-black transition-all shadow-md no-print">📋 COPIAR</button>
-       </div>
-       <div class="space-y-4 text-sm" id="bloco1">
-        <div class="bg-white p-4 rounded-lg border-l-4 border-purple-300 shadow-sm">
-         <p class="font-bold text-slate-800 mb-2">1️⃣ Idade:</p>
-         <div class="space-y-1 text-slate-700 ml-4 font-medium text-sm">
-          <p>( ) Menos de 18 anos</p>
-          <p>( ) 18 a 24 anos</p>
-          <p>( ) 25 a 34 anos</p>
-          <p>( ) 35 anos ou mais</p>
-         </div>
-        </div>
-        <div class="bg-white p-4 rounded-lg border-l-4 border-purple-300 shadow-sm">
-         <p class="font-bold text-slate-800 mb-2">2️⃣ Gênero:</p>
-         <div class="space-y-1 text-slate-700 ml-4 font-medium text-sm">
-          <p>( ) Masculino</p>
-          <p>( ) Feminino</p>
-          <p>( ) Outro</p>
-          <p>( ) Prefiro não dizer</p>
-         </div>
-        </div>
-       </div>
-      </div><!-- Bloco 2 -->
-      <div class="bg-gradient-to-r from-blue-50 via-blue-50 to-cyan-50 rounded-2xl p-5 md:p-6 border-l-4 md:border-l-8 border-blue-600 shadow-md hover:shadow-lg transition-all">
-       <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 mb-4">
-        <h3 class="text-lg md:text-xl font-black text-blue-900 flex items-center gap-2">💭 BLOCO 2: Percepção</h3><button onclick="copyBlock('bloco2')" class="bg-blue-600 hover:bg-blue-700 text-white px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-black transition-all shadow-md no-print">📋 COPIAR</button>
-       </div>
-       <div class="space-y-4 text-sm" id="bloco2">
-        <div class="bg-white p-4 rounded-lg border-l-4 border-blue-300 shadow-sm">
-         <p class="font-bold text-slate-800 mb-2">3️⃣ Qual tema mais te interessa?</p>
-         <div class="space-y-1 text-slate-700 ml-4 font-medium text-sm">
-          <p>( ) Anatomia (como o corpo funciona)</p>
-          <p>( ) Prevenção (IST, vacinas, exames)</p>
-          <p>( ) Direitos e Leis (Dignidade Menstrual)</p>
-          <p>( ) Comportamento e Puberdade</p>
-         </div>
-        </div>
-        <div class="bg-white p-4 rounded-lg border-l-4 border-blue-300 shadow-sm">
-         <p class="font-bold text-slate-800 mb-2">4️⃣ A linguagem dos posts é fácil?</p>
-         <div class="space-y-1 text-slate-700 ml-4 font-medium text-sm">
-          <p>( ) Sim, muito clara</p>
-          <p>( ) Regular</p>
-          <p>( ) Não, é muito técnica</p>
-         </div>
-        </div>
-        <div class="bg-white p-4 rounded-lg border-l-4 border-blue-300 shadow-sm">
-         <p class="font-bold text-slate-800 mb-2">5️⃣ Mudou algum hábito de saúde?</p>
-         <div class="space-y-1 text-slate-700 ml-4 font-medium text-sm">
-          <p>( ) Sim</p>
-          <p>( ) Não</p>
-          <p>( ) Talvez</p>
-         </div>
-        </div>
-       </div>
-      </div><!-- Bloco 3 -->
-      <div class="bg-gradient-to-r from-emerald-50 via-emerald-50 to-teal-50 rounded-2xl p-5 md:p-6 border-l-4 md:border-l-8 border-emerald-600 shadow-md hover:shadow-lg transition-all">
-       <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 mb-4">
-        <h3 class="text-lg md:text-xl font-black text-emerald-900 flex items-center gap-2">📱 BLOCO 3: Engajamento</h3><button onclick="copyBlock('bloco3')" class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-black transition-all shadow-md no-print">📋 COPIAR</button>
-       </div>
-       <div class="space-y-4 text-sm" id="bloco3">
-        <div class="bg-white p-4 rounded-lg border-l-4 border-emerald-300 shadow-sm">
-         <p class="font-bold text-slate-800 mb-2">6️⃣ Com que frequência salva posts?</p>
-         <div class="space-y-1 text-slate-700 ml-4 font-medium text-sm">
-          <p>( ) Sempre</p>
-          <p>( ) Às vezes</p>
-          <p>( ) Nunca</p>
-         </div>
-        </div>
-        <div class="bg-white p-4 rounded-lg border-l-4 border-emerald-300 shadow-sm">
-         <p class="font-bold text-slate-800 mb-2">7️⃣ Sugestão (Opcional):</p>
-         <p class="text-slate-700 ml-4 font-medium text-sm italic">O que você gostaria de ver mais na página?</p>
-        </div>
-       </div>
-      </div><!-- Aviso Final -->
-      <div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-5 md:p-6 border-2 border-dashed border-amber-400 shadow-md">
-       <p class="text-xs md:text-sm font-bold text-amber-900 flex items-start gap-3"><span class="text-2xl">⚠️</span> <span>Copie exatamente como está. Não colete nome/email/IP. O Google Forms anonimiza automaticamente quando configurado corretamente.</span></p>
+      <div class="mt-6 p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300">
+       <p class="text-[9px] text-slate-400 leading-relaxed italic">Mariana: Compare estes números da página com as respostas do Forms em Abril para provar a validade da sua amostra.</p>
       </div>
      </div>
     </section>
    </div>
-   <script>
-    const tcleDefault = `TERMO DE CONSENTIMENTO LIVRE E ESCLARECIDO (TCLE)
+   <section class="bg-white rounded-3xl shadow-xl p-10 border-t-8 border-purple-700 mb-20 no-print">
+    <div class="flex justify-between items-center mb-8">
+     <div>
+      <h2 class="text-2xl font-black text-slate-800 uppercase tracking-tighter italic">🧮 Calculadora de Diagnóstico</h2>
+      <p class="text-slate-400 text-sm font-medium mt-1 uppercase tracking-widest">Análise de Potencial de Conteúdo</p>
+     </div><button onclick="calcularEngajamento()" class="bg-purple-600 text-white px-8 py-3 rounded-xl font-black shadow-lg hover:bg-purple-800 transition-all uppercase text-xs tracking-widest">Diagnosticar</button>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+     <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><label class="text-[10px] font-black text-slate-400 uppercase mb-2 block">Alcance Post</label> <input type="number" id="calcReach" placeholder="0" class="w-full bg-transparent border-b-2 border-slate-300 text-xl font-black text-slate-700 outline-none focus:border-purple-500 transition-all">
+     </div>
+     <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><label class="text-[10px] font-black text-slate-400 uppercase mb-2 block">Curtidas</label> <input type="number" id="calcLikes" placeholder="0" class="w-full bg-transparent border-b-2 border-slate-300 text-xl font-black text-slate-700 outline-none focus:border-purple-500 transition-all">
+     </div>
+     <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><label class="text-[10px] font-black text-slate-400 uppercase mb-2 block">Comentários</label> <input type="number" id="calcComments" placeholder="0" class="w-full bg-transparent border-b-2 border-slate-300 text-xl font-black text-slate-700 outline-none focus:border-purple-500 transition-all">
+     </div>
+     <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><label class="text-[10px] font-black text-slate-400 uppercase mb-2 block">Salvamentos</label> <input type="number" id="calcSaves" placeholder="0" class="w-full bg-transparent border-b-2 border-slate-300 text-xl font-black text-slate-700 outline-none focus:border-purple-500 transition-all">
+     </div>
+    </div>
+    <div id="resultadoCalc" class="hidden grid grid-cols-1 md:grid-cols-3 gap-6 bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-3xl border-2 border-purple-100 shadow-inner">
+     <div class="text-center">
+      <p class="text-[10px] font-black text-purple-400 uppercase tracking-widest mb-1">Taxa Eficácia</p>
+      <p id="taxaEficacia" class="text-4xl font-black text-purple-600 italic">0%</p>
+     </div>
+     <div class="text-center border-x border-purple-200">
+      <p class="text-[10px] font-black text-purple-400 uppercase tracking-widest mb-1">CTR de Post</p>
+      <p id="ctr" class="text-4xl font-black text-pink-600 italic">0%</p>
+     </div>
+     <div class="text-center">
+      <p class="text-[10px] font-black text-purple-400 uppercase tracking-widest mb-1">Status Viral</p>
+      <p id="viralidade" class="text-2xl font-black text-slate-700 uppercase tracking-tighter">—</p>
+     </div>
+    </div>
+   </section>
+  </div>
+  <script>
+    const tcleDefault = `TERMO DE CONSENTIMENTO LIVRE E ESCLARECIDO (TCLE)\n\nPESQUISADORES: Profa. Dra. Sônia Tramin de Mello (Orientadora), Profa. Cláudia Regina Pinheiro Lopes (Coorientadora) e Mariana Nascimento Begalle (Bolsista).\n\nOBJETIVO DA PESQUISA: Identificar a eficácia do Instagram como ferramenta educativa em Saúde Reprodutiva, Anatomia Humana e Direitos Reprodutivos para a população jovem.\n\nSIGILO E ÉTICA: Esta participação é anônima e voluntária. Seus dados serão usados apenas para fins estatísticos e acadêmicos pela UEM.`;
 
-Você está sendo convidado(a) a participar da pesquisa "Análise do Engajamento e da Percepção da População em Geral sobre uma Página do Instagram como Ferramenta de Promoção e Educação em Saúde Reprodutiva", desenvolvida na Universidade Estadual de Maringá (UEM).
-
-PESQUISADORES:
-- Orientadora: Profa. Dra. Sônia Tramin de Mello
-- Coorientadora: Profa. Cláudia Regina Pinheiro Lopes
-- Bolsista: Mariana Nascimento Begalle (Acadêmica do 1º Ano)
-
-OBJETIVO: Identificar como a página @saude.reprodutiva.natal auxilia no conhecimento sobre anatomia, prevenção de ISTs e autocuidado.
-
-PROCEDIMENTOS: Ao concordar, você responderá a um breve questionário anônimo. Não é necessário fornecer nome ou contato pessoal.
-
-GARANTIA DE SIGILO: Seus dados serão mantidos em absoluto sigilo e anonimato, sendo utilizados estritamente para fins acadêmicos.
-
-DÚVIDAS: Em caso de dúvidas sobre este estudo, entre em contato com o Departamento de Anatomia da UEM.`;
-
-    let posts = JSON.parse(localStorage.getItem('icPosts')) || [
-        { date: '10/jun', theme: 'HPV/Prevenção', reach: 1160, l: 168, c: 8, s: 0, sh: 5 },
-        { date: '22/dez', theme: 'Natal/Saúde Repro.', reach: 583, l: 236, c: 6, s: 0, sh: 2 },
-        { date: '11/dez', theme: 'Autoexame 5 Min', reach: 1968, l: 49, c: 17, s: 0, sh: 5 }
-    ];
+    let posts = JSON.parse(localStorage.getItem('icPosts')) || [];
+    let agenda = JSON.parse(localStorage.getItem('icAgenda')) || [];
 
     function render() {
         const body = document.getElementById('tableBody');
+        const exampleRow = body.querySelector('tr');
         body.innerHTML = '';
+        
+        if (exampleRow) {
+            body.appendChild(exampleRow);
+        }
+        
         posts.forEach((p, i) => {
-            const totalInteractions = p.l + p.c + p.s + p.sh;
-            const eff = p.reach > 0 ? ((totalInteractions / p.reach) * 100).toFixed(2) : 0;
-            const isLowSaves = p.s === 0;
+            const eff = p.reach > 0 ? (((p.l + p.c + p.s) / p.reach) * 100).toFixed(2) : 0;
+            const saveClass = p.s === 0 ? 'text-red-600 font-black italic bg-red-50 rounded-lg p-2 border border-red-100 shadow-sm' : 'p-2 font-bold';
             body.innerHTML += `
-                <tr class="border-b-2 border-slate-100 hover:bg-slate-100 transition-all ${i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}">
-                    <td class="p-5 font-mono font-bold text-slate-700 text-[11px] uppercase tracking-wider">${p.date}</td>
-                    <td class="p-5 font-black text-slate-900 text-sm">${p.theme}</td>
-                    <td class="p-5 text-center font-black text-blue-600 text-lg">${p.reach.toLocaleString('pt-BR')}</td>
-                    <td class="p-5 text-center font-bold text-slate-800 text-base">${p.l}</td>
-                    <td class="p-5 text-center font-bold text-slate-800 text-base">${p.c}</td>
-                    <td class="p-5 text-center font-black ${isLowSaves ? 'text-red-600 bg-red-50 rounded-lg text-lg' : 'text-emerald-700 text-base'}">${p.s}</td>
-                    <td class="p-5 text-center font-bold text-slate-800 text-base">${p.sh}</td>
-                    <td class="p-5 text-center font-black text-white text-lg bg-gradient-to-r from-rose-600 to-rose-500 shadow-md">${eff}%</td>
-                    <td class="p-5 text-center no-print"><button onclick="delPost(${i})" class="hover:scale-125 transition-transform font-black text-2xl text-red-400 hover:text-red-600">✕</button></td>
+                <tr class="border-b border-slate-100 hover:bg-rose-50/50 transition-all">
+                    <td class="p-6 font-mono text-[10px] font-black text-slate-400 uppercase tracking-tighter">${p.date}</td>
+                    <td class="p-6 font-black text-slate-900 text-sm tracking-tight">${p.theme}</td>
+                    <td class="p-6 text-center font-black text-blue-600 text-base">${p.reach.toLocaleString('pt-BR')}</td>
+                    <td class="p-6 text-center text-slate-600 text-xs">${p.l}</td>
+                    <td class="p-6 text-center text-slate-600 text-xs">${p.c}</td>
+                    <td class="p-6 text-center"><span class="${saveClass}">${p.s} ${p.s === 0 ? '⚠️' : ''}</span></td>
+                    <td class="p-6 text-center bg-rose-50/50 font-black text-rose-800 text-lg border-l border-rose-100 italic shadow-inner">${eff}%</td>
+                    <td class="p-6 text-center no-print"><button onclick="delPost(${i})" class="text-rose-300 hover:text-red-600 font-black text-xl hover:scale-125 transition-transform">×</button></td>
                 </tr>`;
         });
         localStorage.setItem('icPosts', JSON.stringify(posts));
@@ -398,142 +195,108 @@ DÚVIDAS: Em caso de dúvidas sobre este estudo, entre em contato com o Departam
 
     function addRow(e) {
         e.preventDefault();
-        if(posts.length >= 10) { alert('Amostra de 10 posts atingida!'); return; }
+        if(posts.length >= 10) { alert('Amostra de 10 posts finalizada para Março!'); return; }
         posts.push({
             date: document.getElementById('inDate').value,
             theme: document.getElementById('inTheme').value,
             reach: Number(document.getElementById('inReach').value),
             l: Number(document.getElementById('inLikes').value),
             c: Number(document.getElementById('inComm').value),
-            s: Number(document.getElementById('inSave').value),
-            sh: Number(document.getElementById('inShare').value)
+            s: Number(document.getElementById('inSave').value)
         });
         document.getElementById('addForm').reset();
         render();
     }
 
-    function delPost(i) { if(confirm('Excluir este dado secundário?')) { posts.splice(i, 1); render(); } }
+    function delPost(i) { if(confirm('Excluir este dado da perícia?')) { posts.splice(i, 1); render(); } }
 
-    function quickCalc() {
-        const i = Number(document.getElementById('calcInter').value);
-        const r = Number(document.getElementById('calcReach').value);
-        document.getElementById('resCalc').innerText = r > 0 ? ((i/r)*100).toFixed(2) + '%' : '— %';
+    function addAgenda(e) {
+        e.preventDefault();
+        const data = document.getElementById('inDataAgenda').value;
+        const entrada = document.getElementById('inEntrada').value;
+        const saida = document.getElementById('inSaida').value;
+        
+        if(!data || !entrada || !saida) return;
+
+        const [hE, mE] = entrada.split(':').map(Number);
+        const [hS, mS] = saida.split(':').map(Number);
+        const diff = (hS * 60 + mS) - (hE * 60 + mE);
+        const horas = diff / 60;
+
+        if(horas <= 0) { alert('Erro: Saída deve ser após a entrada!'); return; }
+
+        agenda.push({ data, entrada, saida, horas });
+        renderAgenda();
+        document.getElementById('agendaForm').reset();
     }
 
-    function calcAgeRange() {
-        const u18 = Number(document.getElementById('ageUnder18').value) || 0;
-        const age18to24 = Number(document.getElementById('age18to24').value) || 0;
-        const age25to34 = Number(document.getElementById('age25to34').value) || 0;
-        const age35plus = Number(document.getElementById('age35plus').value) || 0;
-        
-        const total = u18 + age18to24 + age25to34 + age35plus;
-        
-        if (total > 0) {
-            document.getElementById('pctUnder18').innerText = ((u18 / total) * 100).toFixed(1) + '%';
-            document.getElementById('pct18to24').innerText = ((age18to24 / total) * 100).toFixed(1) + '%';
-            document.getElementById('pct25to34').innerText = ((age25to34 / total) * 100).toFixed(1) + '%';
-            document.getElementById('pct35plus').innerText = ((age35plus / total) * 100).toFixed(1) + '%';
-        } else {
-            document.getElementById('pctUnder18').innerText = '—';
-            document.getElementById('pct18to24').innerText = '—';
-            document.getElementById('pct25to34').innerText = '—';
-            document.getElementById('pct35plus').innerText = '—';
-        }
+    function renderAgenda() {
+        const list = document.getElementById('agendaList');
+        list.innerHTML = '';
+        let total = 0;
+        agenda.forEach((a, i) => {
+            total += a.horas;
+            list.innerHTML += `
+                <div class="bg-emerald-700/30 p-3 rounded-xl border border-emerald-400 flex justify-between items-center group">
+                    <div class="text-xs">
+                        <span class="font-black text-white uppercase tracking-tighter">${a.data.split('-').reverse().slice(0,2).join('/')}</span>
+                        <span class="text-emerald-100 ml-2">${a.entrada} - ${a.saida}</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-[10px] font-black bg-emerald-800 text-white px-2 py-0.5 rounded">${a.horas.toFixed(2)}h</span>
+                        <button onclick="delAgenda(${i})" class="text-emerald-200 hover:text-red-400 font-bold no-print">×</button>
+                    </div>
+                </div>`;
+        });
+        document.getElementById('horasTotal').innerText = `${total.toFixed(2)}h / 20h`;
+        if(total >= 20) document.getElementById('horasTotal').classList.replace('text-emerald-700', 'text-white');
+        localStorage.setItem('icAgenda', JSON.stringify(agenda));
     }
+
+    function delAgenda(i) { agenda.splice(i, 1); renderAgenda(); }
 
     function saveTcle() {
         localStorage.setItem('icTcle', document.getElementById('tcleField').value);
         const st = document.getElementById('tcleStatus');
-        st.innerText = 'RASCUNHO SALVO! ✅';
+        st.innerText = 'RASCUNHO PROTEGIDO! ✅';
         setTimeout(() => st.innerText = '', 2500);
     }
 
-    function resetTcle() { if(confirm('Restaurar texto padrão da UEM?')) { document.getElementById('tcleField').value = tcleDefault; saveTcle(); } }
-
     function downloadReport() {
-        const table = document.getElementById('mainTable').cloneNode(true);
-        
-        // Remove coluna de ações (última coluna)
-        table.querySelectorAll('tr').forEach(row => {
-            const cells = row.querySelectorAll('th, td');
-            if (cells.length > 0) {
-                cells[cells.length - 1].remove();
-            }
-        });
-
-        const element = document.createElement('div');
-        element.appendChild(table);
-        
-        const opt = {
-            margin: 15,
-            filename: `Relatorio_Engajamento_${new Date().toLocaleDateString('pt-BR')}.pdf`,
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true },
-            jsPDF: { orientation: 'landscape', unit: 'mm', format: 'a4' }
-        };
-        
-        html2pdf().set(opt).from(element).save();
+        const opt = { margin: 10, filename: 'Relatorio_Pericia_IC_UEM.pdf', image: { type: 'jpeg' }, html2canvas: { scale: 2 }, jsPDF: { orientation: 'landscape' } };
+        html2pdf().set(opt).from(document.getElementById('mainTable')).save();
     }
 
     function exportToExcel() {
-        const data = posts.map(p => {
-            const totalInteractions = p.l + p.c + p.s + p.sh;
-            const efficiency = p.reach > 0 ? ((totalInteractions / p.reach) * 100).toFixed(2) : 0;
-            return {
-                "Data": p.date,
-                "Conteúdo": p.theme,
-                "Alcance 👁️": p.reach,
-                "Curtidas 👍": p.l,
-                "Comentários 💬": p.c,
-                "Salvamentos 🔖": p.s,
-                "Compartilhamentos ↗️": p.sh,
-                "Eficiência ✨ (%)": parseFloat(efficiency)
-            };
-        });
-        
+        if (posts.length === 0) { alert('Adicione dados antes de exportar!'); return; }
+        const data = posts.map(p => ({ Data: p.date, Conteudo: p.theme, Alcance: p.reach, Curtidas: p.l, Comentarios: p.c, Salvos: p.s, Eficacia: (((p.l+p.c+p.s)/p.reach)*100).toFixed(2)+'%' }));
         const ws = XLSX.utils.json_to_sheet(data);
-        ws['!cols'] = [
-            { wch: 12 },
-            { wch: 20 },
-            { wch: 12 },
-            { wch: 12 },
-            { wch: 14 },
-            { wch: 14 },
-            { wch: 18 },
-            { wch: 15 }
-        ];
-        
         const wb = XLSX.utils.book_new();
-        XLSX.utils.book_append_sheet(wb, ws, "Análise de Engajamento");
-        XLSX.writeFile(wb, `Analise_Engajamento_${new Date().toLocaleDateString('pt-BR')}.xlsx`);
+        XLSX.utils.book_append_sheet(wb, ws, "Engajamento");
+        XLSX.utils.writeFile(wb, "Mariana_Março_UEM.xlsx");
     }
 
-    window.onload = () => { render(); document.getElementById('tcleField').value = localStorage.getItem('icTcle') || tcleDefault; };
+    function calcularEngajamento() {
+        const reach = Number(document.getElementById('calcReach').value) || 0;
+        const l = Number(document.getElementById('calcLikes').value) || 0;
+        const c = Number(document.getElementById('calcComments').value) || 0;
+        const s = Number(document.getElementById('calcSaves').value) || 0;
+        
+        if(reach === 0) { alert('Insira o Alcance!'); return; }
+        
+        const eff = ((l + c + s) / reach * 100).toFixed(2);
+        const ctr = (l / reach * 100).toFixed(2);
+        let status = 'Baixa';
+        if(eff >= 5) status = '🔥 Épica';
+        else if(eff >= 2) status = '📈 Sólida';
 
-    function copyBlock(blockId) {
-        const element = document.getElementById(blockId);
-        let text = '';
-        
-        element.querySelectorAll('p').forEach(p => {
-            if (p.textContent.trim() !== '') {
-                text += p.textContent + '\n';
-            }
-        });
-        
-        navigator.clipboard.writeText(text.trim()).then(() => {
-            const btn = event.target;
-            const originalText = btn.textContent;
-            btn.textContent = '✅ Copiado!';
-            btn.classList.add('animate-pulse');
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.classList.remove('animate-pulse');
-            }, 2000);
-        }).catch(() => {
-            alert('Erro ao copiar. Tente novamente.');
-        });
+        document.getElementById('taxaEficacia').innerText = eff + '%';
+        document.getElementById('ctr').innerText = ctr + '%';
+        document.getElementById('viralidade').innerText = status;
+        document.getElementById('resultadoCalc').classList.remove('hidden');
     }
+
+    window.onload = () => { render(); renderAgenda(); document.getElementById('tcleField').value = localStorage.getItem('icTcle') || tcleDefault; };
   </script>
-  </div>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9da7a161e2c4877a',t:'MTc3MzIwMTM5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9da803a591468a23',t:'MTc3MzIwNTQyMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
  </html>
